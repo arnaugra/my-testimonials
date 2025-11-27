@@ -30,12 +30,12 @@ main {
                     max-width: 40%;
                     object-fit: scale-down;
                 }
+            }
 
-                .message {
-                    margin: .5rem;
-                    font-style: italic;
-                    white-space: pre-wrap;
-                }
+            .message {
+                margin: .5rem;
+                font-style: italic;
+                white-space: pre;
             }
 
             .info {
