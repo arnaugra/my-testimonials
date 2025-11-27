@@ -26,7 +26,7 @@ export async function store(req: AuthRequest, res: Response) {
         if (req.file) {
             const newName = getFileName(req, req.file, testimonialId);
             const tempPath = req.file.path;
-            const newPath = `/storage/testimonials/${newName}`;
+            const newPath = `storage/testimonials/${newName}`;
 
             fs.renameSync(tempPath, newPath);
 
@@ -64,7 +64,7 @@ export async function update(req: AuthRequest, res: Response) {
     try {
         if (req.file) {
             const newName = getFileName(req, req.file, Number(id));
-            const newPath = `/storage/testimonials/${newName}`;
+            const newPath = `storage/testimonials/${newName}`;
 
             const currentTestimonial = await testimonialService.show(Number(id));
             if (currentTestimonial.image_url && fs.existsSync(currentTestimonial.image_url)) {

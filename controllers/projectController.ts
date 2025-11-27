@@ -25,7 +25,7 @@ export async function store(req: AuthRequest, res: Response) {
         if (req.file) {
             const newName = getFileName(req, req.file, projectId);
             const tempPath = req.file.path;
-            const newPath = `/storage/projects/${newName}`;
+            const newPath = `storage/projects/${newName}`;
 
             fs.renameSync(tempPath, newPath);
 
@@ -65,7 +65,7 @@ export async function update(req: AuthRequest, res: Response) {
     try {
         if (req.file) {
             const newName = getFileName(req, req.file, Number(id));
-            const newPath = `/storage/projects/${newName}`;
+            const newPath = `storage/projects/${newName}`;
 
             const currentProject = await projectService.show(Number(id));
             if (currentProject.image_url && fs.existsSync(currentProject.image_url)) {
