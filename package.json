@@ -1,0 +1,39 @@
+{
+  "name": "testimonials",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "npx tsx watch main.ts",
+    "build": "tsc",
+    "start": "node main.js",
+    "dev:migrate": "node --loader ts-node/esm scripts/migrate-up.ts",
+    "dev:migrate:down": "node --loader ts-node/esm scripts/migrate-down.ts",
+    "dev:migrate:new": "node --loader ts-node/esm scripts/migrate-new.ts",
+    "dev:create-db": "node --loader ts-node/esm scripts/create-db.ts",
+    "migrate": "node scripts/migrate-up.js",
+    "migrate:down": "node scripts/migrate-down.js",
+    "migrate:new": "node scripts/migrate-new.js",
+    "create-db": "node scripts/create-db.js"
+  },
+  "devDependencies": {
+    "@types/bcrypt": "^6.0.0",
+    "@types/cookie-parser": "^1.4.10",
+    "@types/express": "^5.0.5",
+    "@types/jsonwebtoken": "^9.0.10",
+    "@types/multer": "^2.0.0",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.9.3",
+    "vite": "^7.2.4"
+  },
+  "dependencies": {
+    "bcrypt": "^6.0.0",
+    "cookie-parser": "^1.4.7",
+    "dotenv": "^17.2.3",
+    "edge.js": "^6.3.0",
+    "express": "^5.1.0",
+    "jsonwebtoken": "^9.0.2",
+    "multer": "^2.0.2",
+    "mysql2": "^3.15.3"
+  }
+}

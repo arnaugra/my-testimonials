@@ -1,0 +1,30 @@
+@layout.login()
+
+@slot('scripts')
+<script src="/js/login.js" type="module"></script>
+@end
+
+@slot('style')
+<link href="/css/login.css" rel="stylesheet" />
+@end
+
+@slot('main')
+<main>
+    <inline-svg class="logo" src="/logo.svg"></inline-svg>
+    {{-- <img class="logo" src="/logo.svg" role="img" /> --}}
+    {{ page }}
+
+    <form id="{{ page }}Form">
+        <label for="email" data-email>
+            <input inputmode="email" id="email" name="email" placeholder="email" />
+        </label>
+        <label for="password" data-password>
+            <input type="password" id="password" name="password" placeholder="contraseña" />
+        </label>
+        <span data-errors></span>
+        <button>Enter</button>
+    </form>
+</main>
+@end
+
+@end

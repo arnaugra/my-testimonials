@@ -1,0 +1,51 @@
+@layout.public()
+
+@slot('scripts')
+<script src="/js/token.js" type="module"></script>
+@end
+
+@slot('style')
+<link href="/css/token.css" rel="stylesheet" />
+@end
+
+@slot('main')
+<main>
+
+    <form id="form" data-invitation-id="{{invitation.id}}">
+        <fieldset>
+            <legend>Editar proyecto</legend>
+            <section>
+
+                @if(invitation.project_name)
+                    <label>
+                        <input disabled value="{{invitation.project_name}}" />
+                    </label>
+                @end
+
+                <label for="author" data-author>
+                    <input inputmode="author" id="author" name="author" placeholder="author" />
+                </label>
+
+                <label for="image" data-image>
+                    <input type="file" id="image" name="image" placeholder="image" />
+                </label>
+
+                <textarea name="message" placeholder="message"></textarea>
+
+                @if(invitation.project_id)
+                    <input name="project_id" value="{{ invitation.project_id }}" hidden />
+                @end
+                <input name="invitation_id" value="{{ invitation.id }}" hidden />
+            </section>
+
+            <button type="submit">
+                editar
+            </button>
+
+        </fieldset>
+    </form>
+
+</main>
+@end
+
+@end

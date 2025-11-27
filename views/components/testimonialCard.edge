@@ -1,0 +1,37 @@
+<article id="t{{ t.id }}">
+
+    @if(t.image_url)
+    <div class="testimonial-w-image">
+        <img class="testimonial-image" src="{{ t.image_url }}" />
+    @end
+
+    <p class="message">{{ t.message }}</p>
+
+    @if(t.image_url)
+    </div>
+    @end
+
+    <div class="info">
+        <span>
+            @if(t.project_image_url || t.project_name)
+                @if(t.project_image_url)
+                    <img src="{{ t.project_image_url }}" height="15" />
+                @end
+                @if(t.project_name)
+                    {{ t.project_name }} // 
+                @end
+            @end
+            {{ t.author }}
+        </span>
+        <span>
+            {{ formatDate(t.created_at) }}
+        </span>
+    </div>
+
+    @if("validated" in t)
+        <label class="switch-tri" data-id="{{ t.id }}" data-state="{{ t.validated ? 1 : (t.validated === false ? 0 : -1) }}">
+            <span class="slider"></span>
+        </label>              
+    @end
+
+</article>

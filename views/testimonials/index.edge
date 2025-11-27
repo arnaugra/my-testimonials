@@ -1,0 +1,27 @@
+@layout.auth({ current_path })
+
+@slot('scripts')
+<script src="/js/testimonials/index.js" type="module"></script>
+@end
+
+@slot('style')
+<link href="/css/testimonials.css" rel="stylesheet" />
+@end
+
+@slot('main')
+<main>
+
+    <section id="list">
+
+        @each(t in testimonials)
+            @!component('components/testimonialCard', { t })
+        @else
+            <p class="comment">No hay testimonios</p>
+        @end
+
+    </section>
+
+</main>
+@end
+
+@end

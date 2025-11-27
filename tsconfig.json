@@ -1,0 +1,12 @@
+{
+  "compilerOptions": {
+    "target": "ES2020",
+    "module": "NodeNext",
+    "strict": true,
+    "esModuleInterop": true,
+    "moduleResolution": "nodenext",
+    "outDir": "dist"
+  },
+  "include": ["main.ts", "db.ts", "controllers", "middlewares", "routes", "services", "types", "utils", "scripts"],
+  "exclude": ["node_modules", "dist", "migrations", "public", "storage", "views"]
+}

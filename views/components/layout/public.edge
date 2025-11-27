@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{ title || "testimonials.arnaugra.eu" }}</title>
+
+  <script type="module" src="/webComponents/inline-svg.js"></script>
+
+  @if ($slots.meta)
+    {{{ await $slots.meta() }}}
+  @endif
+  
+  <link href="/css/style.css" rel="stylesheet" />
+
+  @if ($slots.style)
+      {{{ await $slots.style() }}}
+  @endif
+</head>
+<body>
+  {{{ await $slots.main() }}}
+</body>
+@if ($slots.scripts)
+  {{{ await $slots.scripts() }}}
+@endif
+</html>

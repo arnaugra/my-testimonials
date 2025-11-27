@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{ title || "testimonials.arnaugra.eu" }}</title>
+
+  <script type="module" src="/webComponents/inline-svg.js"></script>
+
+  @if ($slots.meta)
+    {{{ await $slots.meta() }}}
+  @endif
+  
+  <link href="/css/style.css" rel="stylesheet" />
+
+  @if ($slots.style)
+      {{{ await $slots.style() }}}
+  @endif
+</head>
+<body data-type-layout="auth">
+  <header>
+    <span>testimonials</span>
+    <nav>
+      <a class="{{ current_path == "/api/projects" ? 'current-link' : '' }}" href="/api/projects">projects</a>
+      <a class="{{ current_path == "/api/invitations" ? 'current-link' : '' }}" href="/api/invitations">invitations</a>
+      <a class="{{ current_path == "/api/testimonials" ? 'current-link' : '' }}" href="/api/testimonials">testimonials</a>
+      <a href="/logout">logout</a>
+    </nav>
+  </header>
+  {{{ await $slots.main() }}}
+</body>
+<script src="/js/global.js"></script>
+
+@if ($slots.scripts)
+  {{{ await $slots.scripts() }}}
+@endif
+</html>

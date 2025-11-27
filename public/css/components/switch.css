@@ -1,0 +1,48 @@
+.switch-tri {
+  position: relative;
+  display: inline-block;
+  width: 30px;
+  height: 13px;
+  cursor: pointer;
+}
+
+.slider {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: gray; /* neutro */
+  border-radius: 15px;
+  transition: .3s;
+}
+
+.slider::before {
+  content: "";
+  position: absolute;
+  height: 11px;
+  width: 11px;
+  left: 1px;
+  bottom: 1px;
+  background-color: white;
+  border-radius: 50%;
+  transition: .3s;
+}
+
+/* Estados */
+.switch-tri[data-state="1"] .slider {
+  background-color: var(--nord-green);
+}
+.switch-tri[data-state="-1"] .slider {
+  background-color: var(--nord-red);
+}
+
+.switch-tri[data-state="1"] .slider::before {
+  transform: translateX(17px);
+}
+.switch-tri[data-state="-1"] .slider::before {
+  transform: translateX(0);
+}
+.switch-tri[data-state="0"] .slider::before {
+  transform: translateX(9px);
+}

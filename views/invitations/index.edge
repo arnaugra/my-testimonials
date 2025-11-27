@@ -1,0 +1,76 @@
+@layout.auth({ current_path })
+
+@slot('scripts')
+<script src="/js/invitations/index.js" type="module"></script>
+@end
+
+@slot('style')
+<link href="/css/invitations.css" rel="stylesheet" />
+@end
+
+@slot('main')
+<main>
+
+    <form id="form">
+        <fieldset>
+
+            <legend>Nueva invitacion</legend>
+            <section>
+                <select name="project_id">
+                    <option value="" disabled selected hidden>Proyecto</option>
+                    @if(projects.length > 0)
+                        @each(p in projects)
+                            <option value="{{ p.id }}">{{ p.name }}</option>
+                        @end
+                    @else
+                        <option disabled class="comment">No hay proyectos</option>
+                    @end
+                </select>
+
+                <label for="expires_at" data-expires_at>
+                    Expiración
+                    <input type="datetime-local" id="expires_at" name="expires_at" value="{{ expiration_value }}" />
+                </label>
+            </section>
+
+            <button type="submit">
+                crear
+            </button>
+
+        </fieldset>
+    </form>
+
+    <section id="list">
+
+        @each(i in invitations)
+            <article id="p{{ i.id }}">
+                @if(i.used_at)
+                    <sub class="italic">usada {{ formatDate(i.used_at) }}</sub>
+                @else
+                    <span class="copy" data-copy="{{ url }}/token/{{ i.token }}">{{ i.token }}</span>
+                @end
+
+                <span>{{ i.project_name || '' }}</span>
+
+                <span style="text-align: center;">
+                    <inline-svg src="/circle.svg" style="width: 1em; color: var(--nord-{{ expiration_status(i.expires_at) }});"></inline-svg>
+                    {{ formatDate(i.expires_at) }}
+                </span>
+
+                    @if(!i.used_at)
+                <div class="actions">
+                    {{-- <a href="/api/invitations/{{ i.id }}">editar</a> --}}
+                    <a href="#" class="delete-button" data-delete-invitation-id="{{ i.id }}">borrar</a>
+                </div>
+                    @end
+            </article>
+        @else
+            <p class="comment">No hay invitaciones</p>
+        @end
+
+    </section>
+
+</main>
+@end
+
+@end

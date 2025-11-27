@@ -1,0 +1,31 @@
+#form fieldset {
+    display: flex;
+    flex-direction: column;
+
+    section {
+        display: grid;
+        gap: 1rem;
+        grid-template-columns: repeat(1, 1fr);
+
+        @media (width > 800px) {
+            & {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        label {
+            width: 100%; /* esto sí */
+            display: flex;
+            gap: .5rem;
+
+            input {
+                width: 100%;
+                box-sizing: border-box;
+            }
+        }
+    }
+
+    button {
+        align-self: flex-end;
+    }
+}

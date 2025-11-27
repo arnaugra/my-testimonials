@@ -1,0 +1,48 @@
+services:
+  testimonials-app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: testimonials-app
+    restart: always
+    ports:
+      - "3000:3000"
+    environment:
+      NODE_ENV: production
+    volumes:
+      - testimonials_storage_data:/usr/src/app/storage
+    depends_on:
+      - mysql
+
+  mysql:
+    image: mysql:8.0
+    container_name: testimonials-mysql
+    restart: always
+    env_file:
+      - .env.production
+    environment:
+      TZ: "Europe/Madrid"
+      MYSQL_ROOT_PASSWORD: ${DB_ROOT_PASSWORD}
+      MYSQL_USER: ${DB_USER}
+      MYSQL_PASSWORD: ${DB_PASSWORD}
+    ports:
+      - "3306:3306"
+    volumes:
+      - testimonials_mysql_data:/var/lib/mysql
+
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    container_name: testimonials-phpmyadmin
+    restart: always
+    environment:
+      PMA_HOST: mysql
+      PMA_USER: root
+      PMA_PASSWORD: root
+    ports:
+      - "8081:80"
+    depends_on:
+      - mysql
+
+volumes:
+  testimonials_mysql_data:
+  testimonials_storage_data:

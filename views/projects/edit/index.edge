@@ -1,0 +1,37 @@
+@layout.auth({ current_path })
+
+@slot('scripts')
+<script src="/js/projects/edit.js" type="module"></script>
+@end
+
+@slot('style')
+<link href="/css/projects.css" rel="stylesheet" />
+@end
+
+@slot('main')
+<main>
+
+    <form id="form" data-project-id="{{project.id}}">
+        <fieldset>
+            <legend>Editar proyecto</legend>
+            <section>
+                <label for="name" data-name>
+                    <input id="name" name="name" placeholder="name" value="{{project.name}}" />
+                </label>
+
+                <label for="image" data-image>
+                    <input type="file" id="image" name="image" placeholder="image" />
+                </label>
+            </section>
+
+            <button type="submit">
+                editar
+            </button>
+
+        </fieldset>
+    </form>
+
+</main>
+@end
+
+@end

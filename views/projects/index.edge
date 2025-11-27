@@ -1,0 +1,59 @@
+@layout.auth({ current_path })
+
+@slot('scripts')
+<script src="/js/projects/index.js" type="module"></script>
+@end
+
+@slot('style')
+<link href="/css/projects.css" rel="stylesheet" />
+@end
+
+@slot('main')
+<main>
+
+    <form id="form">
+        <fieldset>
+
+            <legend>Nuevo proyecto</legend>
+            <section>
+                <label for="name" data-name>
+                    <input id="name" name="name" placeholder="name" />
+                </label>
+
+                <label for="image" data-image>
+                    <input type="file" id="image" name="image" placeholder="image" />
+                </label>
+            </section>
+
+            <button type="submit">
+                crear
+            </button>
+
+        </fieldset>
+    </form>
+
+    <section id="list">
+
+        @each(p in projects)
+            <article id="p{{p.id}}">
+                <div class="project">
+                    <p>{{ p.name }}</p>
+                    @if(p.image_url)
+                        <img src="{{p.image_url}}" />
+                    @end
+                </div>
+                <div class="actions">
+                    <a href="/api/projects/{{p.id}}">editar</a>
+                    <a href="#" class="delete-button" data-delete-project-id="{{p.id}}">borrar</a>
+                </div>
+            </article>
+        @else
+            <p class="comment">No hay proyectos</p>
+        @end
+
+    </section>
+
+</main>
+@end
+
+@end
