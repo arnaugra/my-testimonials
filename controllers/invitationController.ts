@@ -4,9 +4,6 @@ import { generateToken } from "../utils/generateToken.js"
 import { futureDate } from "../utils/date.js"
 import * as invitationService from "../services/invitationService.js";
 import * as projectService from "../services/projectService.js";
-import dotenv from 'dotenv'
-
-dotenv.config()
 
 export async function index(req: AuthRequest, res: Response) {
     try {

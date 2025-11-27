@@ -1,8 +1,5 @@
 import { db } from "../db.js"
 import { ResultSetHeader, RowDataPacket  } from "mysql2";
-import dotenv from "dotenv";
-
-dotenv.config();
 
 interface User {
     id: number

@@ -1,9 +1,6 @@
 import { db } from "../db.js"
 import { ResultSetHeader, RowDataPacket  } from "mysql2";
-import dotenv from "dotenv";
 import { Project } from "../types/interfaces.js";
-
-dotenv.config();
 
 type storeProject = Omit<Project, "id" | "soft_deleted">
 type updateProject = Partial<Omit<Project, "id" | "soft_deleted">>
