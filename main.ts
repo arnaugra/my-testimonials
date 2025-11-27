@@ -1,5 +1,5 @@
+import 'dotenv/config'
 import express from "express";
-import dotenv from "dotenv";
 import authRoutes from "./routes/auth.js";
 import api from "./routes/api.js";
 import { setupEdge } from "./utils/setupEdge.js";
@@ -12,7 +12,6 @@ import * as testimonialController from './controllers/testimonialController.js'
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = path.dirname(__filename)
 
-dotenv.config();
 const app = express();
 
 setupEdge(app)
