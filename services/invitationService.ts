@@ -39,9 +39,8 @@ export async function index(): Promise<Invitation[]> {
         AND
         i.expires_at > DATE_SUB(NOW(), INTERVAL 7 DAY)
     ORDER BY
-        i.expires_at ASC,
-        i.used_at IS NULL,
-        i.used_at desc;
+        i.used_at IS NULL DESC,
+        i.expires_at ASC;
     `
     const [rows] = await db.execute<RowDataPacket[]>(q, [false, false])
     return rows as Invitation[]
