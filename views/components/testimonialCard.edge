@@ -13,13 +13,12 @@
 
     <div class="info">
         <span>
-            @if(t.project_image_url || t.project_name)
+            @if(t.project_name)
                 @if(t.project_image_url)
                     <img src="{{ t.project_image_url }}" height="15" />
                 @end
-                @if(t.project_name)
-                    {{ t.project_name }} // 
-                @end
+
+                {{ t.project_name }} // 
             @end
             {{ t.author }}
         </span>
