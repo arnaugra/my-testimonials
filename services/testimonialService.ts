@@ -113,13 +113,16 @@ export async function testimonialsList(): Promise<testimonialItem[]> {
         p.image_url project_image_url
 
     FROM testimonials t
-    JOIN projects p ON t.project_id = p.id
+    LEFT JOIN projects p ON t.project_id = p.id
     WHERE
         t.soft_deleted = ?
         AND
         t.validated = ?
         AND
-        p.soft_deleted = ?
+        (
+            t.project_id IS NULL
+            OR p.soft_deleted = ?
+        );
     `
     const [rows] = await db.execute<RowDataPacket[]>(q, [false, true, false]) 
 
