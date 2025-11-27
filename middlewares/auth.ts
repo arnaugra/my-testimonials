@@ -22,7 +22,7 @@ export function authUser(req: AuthRequest, res: Response, next: NextFunction) {
 
 export function authUserCookie(req: AuthRequest, res: Response, next: NextFunction) {
   const token = req.cookies.token;
-  if (!token) return res.status(401).json({ error: "Missing token" });
+  if (!token) return res.status(401).redirect("/?error=401 unauthorized");
 
   try {
     const payload = jwt.verify(token, process.env.JWT_SECRET!) as { userId: number };

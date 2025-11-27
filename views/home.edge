@@ -9,6 +9,16 @@
 @end
 
 @slot('main')
+@if(error)
+    <div id="error" class="error">
+        {{ error }}
+        <script>
+            setTimeout(() => {
+                document.querySelector("#error.error").remove()
+            }, 4000)
+        </script>
+    </div>
+@end
 <main>
     <section id="list">
         @each(t in testimonials)

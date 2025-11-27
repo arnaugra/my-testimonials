@@ -99,10 +99,11 @@ export async function destroy(req: AuthRequest, res: Response) {
 }
 
 export async function testimonialsList(req: AuthRequest, res: Response) {
+    const { error } = req.query
 
     try {
         const testimonials = await testimonialService.testimonialsList()
-        res.render("home", {testimonials})
+        res.render("home", { testimonials, error })
     } catch (error) {
         res.status(500).json({ error: "Error testimonialsList" })
     }
