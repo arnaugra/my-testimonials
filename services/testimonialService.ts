@@ -109,7 +109,7 @@ export async function testimonialsList(): Promise<testimonialItem[]> {
         t.image_url image_url,
         t.created_at created_at,
 
-        p.name project_ame,
+        p.name project_name,
         p.image_url project_image_url
 
     FROM testimonials t
