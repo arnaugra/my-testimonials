@@ -39,8 +39,6 @@ export async function store(req: AuthRequest, res: Response) {
         res.status(200).json()
 
     } catch (error) {
-        console.log(error);
-        
         res.status(500).json({ error: "Error storing testimonial" });
 
     }
@@ -104,12 +102,8 @@ export async function testimonialsList(req: AuthRequest, res: Response) {
 
     try {
         const testimonials = await testimonialService.testimonialsList()
-        console.log(testimonials);
-        
         res.render("home", {testimonials})
     } catch (error) {
-        console.error(error);
-        
         res.status(500).json({ error: "Error testimonialsList" })
     }
 
@@ -122,14 +116,9 @@ export async function createByToken(req: AuthRequest, res: Response) {
         const invitation = await invitationService.byToken(token)
 
         if (!invitation) res.redirect('/') // TODO: view http (code, message)
-        console.log(invitation);
-        
-
         res.render("testimonials/token", { invitation })
 
     } catch (error) {
-        console.log(error);
-
         res.status(500).json({ error: "" })
     }
 }

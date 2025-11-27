@@ -7,10 +7,6 @@ editInvitationForm.addEventListener('submit', (e) => {
     
     const form = new FormData(editInvitationForm)
 
-for (const [key, value] of form.entries()) {
-  console.log(key, value);
-}
-
     fetchSignIn(form)
 })
 
