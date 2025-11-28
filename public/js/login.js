@@ -99,7 +99,7 @@ function fetchLogin(form) {
             return
         }
 
-        window.location.href = '/api/projects'
+        window.location.href = '/api/testimonials'
     })
     .catch(err => {
         console.error(err)
