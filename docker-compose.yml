@@ -6,7 +6,7 @@ services:
     container_name: testimonials-app
     restart: always
     ports:
-      - "3000:3000"
+      - "127.0.0.1:3000:3000"
     environment:
       NODE_ENV: production
     volumes:
@@ -26,7 +26,7 @@ services:
       MYSQL_USER: ${DB_USER}
       MYSQL_PASSWORD: ${DB_PASSWORD}
     ports:
-      - "3306:3306"
+      - "127.0.0.1:3306:3306"
     volumes:
       - testimonials_mysql_data:/var/lib/mysql
 
@@ -39,7 +39,7 @@ services:
       PMA_USER: root
       PMA_PASSWORD: root
     ports:
-      - "8081:80"
+      - "127.0.0.1:8081:80"
     depends_on:
       - mysql
 
