@@ -2,7 +2,7 @@
 
     @if(t.image_url)
     <div class="testimonial-w-image">
-        <img class="testimonial-image" src="/{{ t.image_url }}" />
+        <img class="testimonial-image" src="{{ t.image_url }}" />
     @end
 
     <p class="message">{{ t.message }}</p>
@@ -15,7 +15,7 @@
         <span>
             @if(t.project_name)
                 @if(t.project_image_url)
-                    <img src="/{{ t.project_image_url }}" height="15" />
+                    <img src="{{ t.project_image_url }}" height="15" />
                 @end
 
                 {{ t.project_name }} // 

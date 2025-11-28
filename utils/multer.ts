@@ -4,7 +4,7 @@ import fs from "fs"
 import { AuthRequest } from "../middlewares/auth.js";
 
 export const createUpload = (folder: Partial<string>) => {
-  const folderPath = `storage/${folder}`
+  const folderPath = path.join(process.cwd(), "storage", folder);
 
   if (!fs.existsSync(folderPath)) {
     fs.mkdirSync(folderPath, { recursive: true });
