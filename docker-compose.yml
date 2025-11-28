@@ -18,8 +18,6 @@ services:
     image: mysql:8.0
     container_name: testimonials-mysql
     restart: always
-    env_file:
-      - .env.production
     environment:
       TZ: "Europe/Madrid"
       MYSQL_ROOT_PASSWORD: ${DB_ROOT_PASSWORD}
