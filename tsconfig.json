@@ -7,6 +7,6 @@
     "moduleResolution": "nodenext",
     "outDir": "dist"
   },
-  "include": ["main.ts", "db.ts", "controllers", "middlewares", "routes", "services", "types", "utils", "scripts"],
-  "exclude": ["node_modules", "dist", "migrations", "public", "storage", "views"]
+  "include": ["src"],
+  "exclude": ["node_modules", "dist", "migrations", "public", "storage", "scripts", "views"]
 }

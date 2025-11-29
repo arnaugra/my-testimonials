@@ -29,7 +29,7 @@ export function setupEdge(app: Express) {
     return 'red';
   })
 
-  const viewsPath = path.join(__dirname, "..", 'views')
+  const viewsPath = path.join(__dirname, "../..", 'views')
   edgeEngine.mount(viewsPath)
 
   app.engine('edge', async (filePath, options, callback) => {

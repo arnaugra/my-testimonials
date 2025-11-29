@@ -1,4 +1,4 @@
-import { db } from "../db.js"
+import { db } from "../../db.js"
 import { ResultSetHeader, RowDataPacket  } from "mysql2";
 import { User } from "../types/models.js";
 

@@ -3,7 +3,7 @@ import path from "path";
 import fs from "fs"
 import { AuthRequest } from "../middlewares/auth.js";
 
-export const createUpload = (folder: Partial<string>) => {
+export const createUpload = (folder: string) => {
   const folderPath = path.join(process.cwd(), "storage", folder);
 
   if (!fs.existsSync(folderPath)) {

@@ -31,7 +31,7 @@ export async function store(req: AuthRequest, res: Response) {
             fs.renameSync(tempPath, newPath);
 
             await testimonialService.update(testimonialId, {
-                image_url: newPath
+                image_url: `/${newPath}`
             });
 
         }
@@ -72,7 +72,7 @@ export async function update(req: AuthRequest, res: Response) {
             }
 
             fs.renameSync(req.file.path, newPath);
-            data.image_url = newPath
+            data.image_url = `/${newPath}`
         }
 
         await testimonialService.update(Number(id), data)

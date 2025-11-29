@@ -20,7 +20,7 @@ app.use(express.json());
 app.use(cookieParser());
 
 app.use("/storage", express.static("storage"));
-app.use(express.static(__dirname + '/public'))
+app.use(express.static(__dirname + '../../public'))
 
 app.get("/", testimonialController.testimonialsList)
 

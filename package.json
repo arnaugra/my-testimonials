@@ -4,17 +4,13 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev": "npx tsx watch main.ts",
+    "dev": "npx tsx watch src/main.ts",
     "build": "tsc",
-    "start": "node main.js",
-    "dev:migrate": "node --loader ts-node/esm scripts/migrate-up.ts",
-    "dev:migrate:down": "node --loader ts-node/esm scripts/migrate-down.ts",
-    "dev:migrate:new": "node --loader ts-node/esm scripts/migrate-new.ts",
-    "dev:create-db": "node --loader ts-node/esm scripts/create-db.ts",
-    "migrate": "node scripts/migrate-up.js",
-    "migrate:down": "node scripts/migrate-down.js",
-    "migrate:new": "node scripts/migrate-new.js",
-    "create-db": "node scripts/create-db.js"
+    "start": "node dist/main.js",
+    "migrate": "npx ts-node scripts/migrate-up.ts",
+    "migrate:down": "npx ts-node scripts/migrate-down.ts",
+    "migrate:new": "npx ts-node scripts/migrate-new.ts",
+    "create-db": "npx ts-node scripts/create-db.ts"
   },
   "devDependencies": {
     "@types/bcrypt": "^6.0.0",
