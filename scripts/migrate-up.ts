@@ -24,27 +24,24 @@ const files = fs.readdirSync(migrationsDir).sort();
       name VARCHAR(255) NOT NULL UNIQUE,
       batch INT NOT NULL,
       applied_at DATETIME NOT NULL
-    )
+    );
   `);
 
-  const [rows]: any = await connection.execute("SELECT MAX(batch) as lastBatch FROM migrations");
+  const [rows]: any = await connection.execute("SELECT MAX(batch) as lastBatch FROM migrations;");
   const lastBatch = rows[0].lastBatch || 0;
   const nextBatch = lastBatch + 1;
   
   for (const file of files) {
 
-    const [rows] = await connection.execute("SELECT 1 FROM migrations WHERE name = ?", [file]);
-    if ((rows as any[]).length) {
-      console.log(`Skipping already applied migration: ${file}`);
-      continue;
-    }
+    const [rows] = await connection.execute("SELECT 1 FROM migrations WHERE name = ?;", [file]);
+    if ((rows as any[]).length) continue;
 
     const sql = fs.readFileSync(path.join(migrationsDir, file), "utf8");
     console.log(`Applying migration: ${file}`);
     
     await connection.query(sql);
 
-    await connection.execute("INSERT INTO migrations (name, batch, applied_at) VALUES (?, ?, NOW())", [file, nextBatch]);
+    await connection.execute("INSERT INTO migrations (name, batch, applied_at) VALUES (?, ?, NOW());", [file, nextBatch]);
   }
 
   console.log("✅ All migrations applied");
