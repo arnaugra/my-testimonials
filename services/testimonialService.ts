@@ -1,6 +1,6 @@
 import { db } from "../db.js"
 import { ResultSetHeader, RowDataPacket  } from "mysql2";
-import { Testimonial, Project } from '../types/interfaces.js'
+import { Testimonial, Project } from '../types/models.js'
 
 type storeTestimonial = Omit<Testimonial, "id" | "soft_deleted">
 type updateTestimonial = Partial<Omit<Testimonial, "id" | "soft_deleted">>

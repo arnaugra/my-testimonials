@@ -1,12 +1,6 @@
 import { db } from "../db.js"
 import { ResultSetHeader, RowDataPacket  } from "mysql2";
-
-interface User {
-    id: number
-    email: string
-    password_hash:string
-    soft_deleted: boolean
-}
+import { User } from "../types/models.js";
 
 /**
  * Get all users

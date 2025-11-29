@@ -1,14 +1,6 @@
 import { db } from "../db.js"
 import { ResultSetHeader, RowDataPacket  } from "mysql2";
-
-interface Invitation {
-    id: number
-    project_id: number
-    token: string
-    expires_at: Date
-    used_at?: Date
-    soft_deleted: boolean
-}
+import { Invitation } from "../types/models.js";
 
 type storeInvitation = Omit<Invitation, "id" | "token" | "used_at" | "soft_deleted">
 type updateInvitation = Partial<Omit<Invitation, "id" | "soft_deleted">>
